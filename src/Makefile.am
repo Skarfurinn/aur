@@ -120,6 +120,7 @@ BITCOIN_CORE_H = \
   script/sign.h \
   script/standard.h \
   script/script_error.h \
+  scrypt.h \
   serialize.h \
   streams.h \
   sync.h \
@@ -254,6 +255,7 @@ libbitcoin_common_a_SOURCES = \
   script/sign.cpp \
   script/standard.cpp \
   script/script_error.cpp \
+  scrypt.cpp \
   $(BITCOIN_CORE_H)
 
 # util: shared between all executables.
