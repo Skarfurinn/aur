@@ -11,6 +11,83 @@
 #include "uint256.h"
 #include "util.h"
 
+unsigned int static GravityWell(const CBlockIndex* pindexLast, const CBlockHeader *pblock, int64_t TargetBlocksSpacingSeconds, uint64_t PastBlocksMin, uint64_t PastBlocksMax) {
+
+    const CBlockIndex  *BlockLastSolved             = pindexLast;
+    const CBlockIndex  *BlockReading                = pindexLast;
+    uint64_t             PastBlocksMass              = 0;
+    int64_t             PastRateActualSeconds       = 0;
+    int64_t             PastRateTargetSeconds       = 0;
+    double              PastRateAdjustmentRatio     = double(1);
+    uint256             PastDifficultyAverage;
+    uint256             PastDifficultyAveragePrev;
+    uint256             BlockReadingDifficulty;
+    double              EventHorizonDeviation;
+    double              EventHorizonDeviationFast;
+    double              EventHorizonDeviationSlow;
+
+if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 ||
+        (uint64_t)BlockLastSolved->nHeight < PastBlocksMin) {
+        return Params().ProofOfWorkLimit().GetCompact();
+    }
+
+    int64_t LatestBlockTime = BlockLastSolved->GetBlockTime();
+
+    for (unsigned int i = 1; BlockReading && BlockReading->nHeight > 0; i++) {
+        if (PastBlocksMax > 0 && i > PastBlocksMax) { break; }
+        PastBlocksMass++;
+
+        if (i == 1) {
+            PastDifficultyAverage.SetCompact(BlockReading->nBits);
+        } else {
+            BlockReadingDifficulty.SetCompact(BlockReading->nBits);
+            if (BlockReadingDifficulty > PastDifficultyAveragePrev) {
+                PastDifficultyAverage = PastDifficultyAveragePrev + ((BlockReadingDifficulty - PastDifficultyAveragePrev) / i);
+            } else {
+                PastDifficultyAverage = PastDifficultyAveragePrev - ((PastDifficultyAveragePrev - BlockReadingDifficulty) / i);
+            }
+        }
+        PastDifficultyAveragePrev = PastDifficultyAverage;
+
+        PastRateActualSeconds = LatestBlockTime - BlockReading->GetBlockTime();
+        PastRateTargetSeconds = TargetBlocksSpacingSeconds * PastBlocksMass;
+        PastRateAdjustmentRatio = double(1);
+        if (PastRateActualSeconds < 0) { PastRateActualSeconds = 0; }
+        if (PastRateActualSeconds != 0 && PastRateTargetSeconds != 0) {
+            PastRateAdjustmentRatio = double(PastRateTargetSeconds) / double(PastRateActualSeconds);
+        }
+        EventHorizonDeviation                   = 1 + (0.7084 * pow((double(PastBlocksMass)/double(144)), -1.228));
+        EventHorizonDeviationFast               = EventHorizonDeviation;
+        EventHorizonDeviationSlow               = 1 / EventHorizonDeviation;
+
+        if (PastBlocksMass >= PastBlocksMin) {
+            if ((PastRateAdjustmentRatio <= EventHorizonDeviationSlow) ||
+                (PastRateAdjustmentRatio >= EventHorizonDeviationFast)) {
+                assert(BlockReading);
+                break;
+            }
+        }
+        if (BlockReading->pprev == NULL) { assert(BlockReading); break; }
+        BlockReading = BlockReading->pprev;
+    }
+
+    uint256 bnNew(PastDifficultyAverage);
+    if (PastRateActualSeconds != 0 && PastRateTargetSeconds != 0) {
+        bnNew *= PastRateActualSeconds;
+        bnNew /= PastRateTargetSeconds;
+    }
+    if (bnNew > Params().ProofOfWorkLimit()) { bnNew = Params().ProofOfWorkLimit(); }
+
+    // debug print
+    LogPrintf("GetNextWorkRequired RETARGET (KGW Original)\n");
+    LogPrintf("PastRateAdjustmentRatio =  %g    PastRateTargetSeconds = %d    PastRateActualSeconds = %d\n",
+               PastRateAdjustmentRatio, PastRateTargetSeconds, PastRateActualSeconds);
+    LogPrintf("Before: %08x  %s\n", BlockLastSolved->nBits, uint256().SetCompact(BlockLastSolved->nBits).ToString());
+    LogPrintf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.ToString());
+
+    return bnNew.GetCompact();
+}
+
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
     unsigned int nProofOfWorkLimit = Params().ProofOfWorkLimit().GetCompact();
@@ -18,6 +95,22 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     // Genesis block
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
+
+    if (pindexLast->nHeight+1 < 135)
+        return nProofOfWorkLimit;
+
+    // Gravity well after block 5400
+    if (pindexLast->nHeight+1 > 5400)
+    {
+        static const int64_t  BlocksTargetSpacing         = 5 * 60; // 5 minutes
+        unsigned int          TimeDaySeconds              = 60 * 60 * 24;
+        int64_t               PastSecondsMin              = TimeDaySeconds * 0.5;
+        int64_t               PastSecondsMax              = TimeDaySeconds * 14;
+        uint64_t               PastBlocksMin               = PastSecondsMin / BlocksTargetSpacing;
+        uint64_t               PastBlocksMax               = PastSecondsMax / BlocksTargetSpacing;
+
+        return GravityWell(pindexLast, pblock, BlocksTargetSpacing, PastBlocksMin, PastBlocksMax);
+    }
 
     // Only change once per interval
     if ((pindexLast->nHeight+1) % Params().Interval() != 0)
@@ -40,20 +133,30 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         }
         return pindexLast->nBits;
     }
-
-    // Go back by what we want to be 14 days worth of blocks
     const CBlockIndex* pindexFirst = pindexLast;
-    for (int i = 0; pindexFirst && i < Params().Interval()-1; i++)
-        pindexFirst = pindexFirst->pprev;
-    assert(pindexFirst);
+
+    // Go back the full period unless it's the first retarget after genesis.
+    if ((pindexLast->nHeight+1) != Params().Interval()-1)
+    {
+        for (int i = 0; pindexFirst && i < Params().Interval(); i++)
+            pindexFirst = pindexFirst->pprev;
+        assert(pindexFirst);
+    }
+    else
+    {
+        for (int i = 0; pindexFirst && i < Params().Interval()-1; i++)
+            pindexFirst = pindexFirst->pprev;
+        assert(pindexFirst);
+    }
 
     // Limit adjustment step
     int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
+    LogPrintf("Block Time: %d \n", pindexLast->GetBlockTime());
     LogPrintf("  nActualTimespan = %d  before bounds\n", nActualTimespan);
-    if (nActualTimespan < Params().TargetTimespan()/4)
-        nActualTimespan = Params().TargetTimespan()/4;
-    if (nActualTimespan > Params().TargetTimespan()*4)
-        nActualTimespan = Params().TargetTimespan()*4;
+    if (nActualTimespan < ((Params().TargetTimespan()*50)/75))
+        nActualTimespan = ((Params().TargetTimespan()*50)/75);
+    if (nActualTimespan > ((Params().TargetTimespan()*75)/50))
+        nActualTimespan = ((Params().TargetTimespan()*75)/50);
 
     // Retarget
     uint256 bnNew;

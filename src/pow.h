@@ -7,6 +7,7 @@
 #define BITCOIN_POW_H
 
 #include <stdint.h>
+#include <math.h>
 
 class CBlockHeader;
 class CBlockIndex;

@@ -220,16 +220,17 @@ public:
         return (int64_t)nTime;
     }
 
-    enum { nMedianTimeSpan=11 };
+    enum { nKGWMedianTimeSpan=3, nMedianTimeSpan=11 };
 
     int64_t GetMedianTimePast() const
     {
         int64_t pmedian[nMedianTimeSpan];
         int64_t* pbegin = &pmedian[nMedianTimeSpan];
         int64_t* pend = &pmedian[nMedianTimeSpan];
-
         const CBlockIndex* pindex = this;
-        for (int i = 0; i < nMedianTimeSpan && pindex; i++, pindex = pindex->pprev)
+        int span = ((pindex->nHeight > 5400) ? nKGWMedianTimeSpan : nMedianTimeSpan);
+
+        for (int i = 0; i < span && pindex; i++, pindex = pindex->pprev)
             *(--pbegin) = pindex->GetBlockTime();
 
         std::sort(pbegin, pend);
@@ -238,7 +239,7 @@ public:
 
     /**
      * Returns true if there are nRequired or more blocks of minVersion or above
-     * in the last Params().ToCheckBlockUpgradeMajority() blocks, starting at pstart 
+     * in the last Params().ToCheckBlockUpgradeMajority() blocks, starting at pstart
      * and going backwards.
      */
     static bool IsSuperMajority(int minVersion, const CBlockIndex* pstart,
