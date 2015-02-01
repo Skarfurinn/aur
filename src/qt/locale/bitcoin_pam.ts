@@ -315,7 +315,7 @@
         <translation>Gamit para king Tabs</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
+        <source>Auroracoin Core</source>
         <translation>Kapilubluban ning Bitcoin</translation>
     </message>
     <message>
@@ -466,7 +466,7 @@ Address: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Bitcoin Core</source>
+        <source>Auroracoin Core</source>
         <translation>Kapilubluban ning Bitcoin</translation>
     </message>
     <message>
@@ -509,7 +509,7 @@ Address: %4
         <translation>Malaus ka</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
+        <source>Auroracoin Core</source>
         <translation>Kapilubluban ning Bitcoin</translation>
     </message>
     <message>
@@ -626,8 +626,8 @@ Address: %4
         <translation>Form</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Ing makaltong impormasion mapalyaring luma ne. Ing kekang wallet otomatiku yang mag-synchronize keng Bitcoin network istung mekakonekta ne king network, oneng ing prosesung ini ali ya pa kumpletu.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Auroracoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Ing makaltong impormasion mapalyaring luma ne. Ing kekang wallet otomatiku yang mag-synchronize keng Auroracoin network istung mekakonekta ne king network, oneng ing prosesung ini ali ya pa kumpletu.</translation>
     </message>
     <message>
         <source>Your current spendable balance</source>
@@ -753,8 +753,8 @@ Address: %4
         <translation>I-Clear ing console</translation>
     </message>
     <message>
-        <source>Welcome to the Bitcoin RPC console.</source>
-        <translation>Malaus kayu king Bitcoin RPC console.</translation>
+        <source>Welcome to the Auroracoin RPC console.</source>
+        <translation>Malaus kayu king Auroracoin RPC console.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -1045,7 +1045,7 @@ Address: %4
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Bitcoin Core</source>
+        <source>Auroracoin Core</source>
         <translation>Kapilubluban ning Bitcoin</translation>
     </message>
     <message>

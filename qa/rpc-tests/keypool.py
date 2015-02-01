@@ -1,5 +1,5 @@
 #!/usr/bin/env python2
-# Copyright (c) 2014 The Bitcoin Core developers
+# Copyright (c) 2014 The Auroracoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -44,7 +44,7 @@ def check_array_result(object_array, to_match, expected):
 def run_test(nodes, tmpdir):
     # Encrypt wallet and wait to terminate
     nodes[0].encryptwallet('test')
-    bitcoind_processes[0].wait()
+    auroracoind_processes[0].wait()
     # Restart node 0
     nodes[0] = start_node(0, tmpdir)
     # Keep creating keys
@@ -81,9 +81,9 @@ def main():
 
     parser = optparse.OptionParser(usage="%prog [options]")
     parser.add_option("--nocleanup", dest="nocleanup", default=False, action="store_true",
-                      help="Leave bitcoinds and test.* datadir on exit or error")
+                      help="Leave auroracoinds and test.* datadir on exit or error")
     parser.add_option("--srcdir", dest="srcdir", default="../../src",
-                      help="Source directory containing bitcoind/bitcoin-cli (default: %default%)")
+                      help="Source directory containing auroracoind/auroracoin-cli (default: %default%)")
     parser.add_option("--tmpdir", dest="tmpdir", default=tempfile.mkdtemp(prefix="test"),
                       help="Root directory for datadirs")
     (options, args) = parser.parse_args()
@@ -118,7 +118,7 @@ def main():
     if not options.nocleanup:
         print("Cleaning up")
         stop_nodes(nodes)
-        wait_bitcoinds()
+        wait_auroracoinds()
         shutil.rmtree(options.tmpdir)
 
     if success:

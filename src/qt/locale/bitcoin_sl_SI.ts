@@ -279,8 +279,8 @@
         <translation>Odpri &amp;URI...</translation>
     </message>
     <message>
-        <source>Bitcoin Core client</source>
-        <translation>Odjemalec Bitcoin Core</translation>
+        <source>Auroracoin Core client</source>
+        <translation>Odjemalec Auroracoin Core</translation>
     </message>
     <message>
         <source>Importing blocks from disk...</source>
@@ -331,8 +331,8 @@
         <translation>&amp;Sprejmi</translation>
     </message>
     <message>
-        <source>Show information about Bitcoin Core</source>
-        <translation>Pokaži informacije o Bitcoin Core</translation>
+        <source>Show information about Auroracoin Core</source>
+        <translation>Pokaži informacije o Auroracoin Core</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -367,11 +367,11 @@
         <translation>Orodna vrstica zavihkov</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
+        <source>Auroracoin Core</source>
         <translation>Jedro Bitcoina</translation>
     </message>
     <message>
-        <source>&amp;About Bitcoin Core</source>
+        <source>&amp;About Auroracoin Core</source>
         <translation>&amp;O jedru Bitcoina</translation>
     </message>
     <message>
@@ -383,11 +383,11 @@
         <translation>Prikaži seznam uporabljenih sprejemnih naslovov in oznak</translation>
     </message>
     <message>
-        <source>Open a bitcoin: URI or payment request</source>
+        <source>Open a auroracoin: URI or payment request</source>
         <translation>Odpri Bitcoin: URI ali zahteva o plačilu</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bitcoin network</source>
+        <source>%n active connection(s) to Auroracoin network</source>
         <translation><numerusform>%n aktivna povezava v bitcoin omrežje</numerusform><numerusform>%n aktivni povezavi v bitcoin omrežje</numerusform><numerusform>%n aktivnih povezav v bitcoin omrežje</numerusform><numerusform>%n aktivnih povezav v bitcoin omrežje</numerusform></translation>
     </message>
     <message numerus="yes">
@@ -746,7 +746,7 @@ Naslov: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Bitcoin Core</source>
+        <source>Auroracoin Core</source>
         <translation>Jedro Bitcoina</translation>
     </message>
     <message>
@@ -758,7 +758,7 @@ Naslov: %4
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About Bitcoin Core</source>
+        <source>About Auroracoin Core</source>
         <translation>O jedru Bitcoina</translation>
     </message>
     <message>
@@ -805,16 +805,16 @@ Naslov: %4
         <translation>Dobrodošli</translation>
     </message>
     <message>
-        <source>Welcome to Bitcoin Core.</source>
+        <source>Welcome to Auroracoin Core.</source>
         <translation>Dobrodošli v jedru Bitcoina</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where Bitcoin Core will store its data.</source>
-        <translation>Program poganjaš prvič. Izberi kje bo Bitcoin Core shranjeval svoje podatke.</translation>
+        <source>As this is the first time the program is launched, you can choose where Auroracoin Core will store its data.</source>
+        <translation>Program poganjaš prvič. Izberi kje bo Auroracoin Core shranjeval svoje podatke.</translation>
     </message>
     <message>
-        <source>Bitcoin Core will download and store a copy of the Bitcoin block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Bitcoin Core bo prenesel in shranil kopijo Bitcoin verige blokov. V izbrano mapo bo shranjenih vsaj %1 GB podatkov, ta količina pa bo sčasoma še naraščala. Denarnica bo prav tako shranjena v to mapo.</translation>
+        <source>Auroracoin Core will download and store a copy of the Bitcoin block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Auroracoin Core bo prenesel in shranil kopijo Bitcoin verige blokov. V izbrano mapo bo shranjenih vsaj %1 GB podatkov, ta količina pa bo sčasoma še naraščala. Denarnica bo prav tako shranjena v to mapo.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -825,7 +825,7 @@ Naslov: %4
         <translation>Uporabi to mapo za shranjevanje podatkov:</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
+        <source>Auroracoin Core</source>
         <translation>Jedro Bitcoina</translation>
     </message>
     <message>
@@ -998,7 +998,7 @@ Naslov: %4
         <translation>Oblika</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Auroracoin network after a connection is established, but this process has not completed yet.</source>
         <translation>Prikazanim podatkom je lahko potekel rok. Vaša denarnica bo po vzpostavitvi povezave samodejno sinhronizirana z Bitcoin omrežjem, ampak ta proces še ni bil zaključen.</translation>
     </message>
     <message>
@@ -1209,8 +1209,8 @@ Naslov: %4
         <translation>Počisti konzolo</translation>
     </message>
     <message>
-        <source>Welcome to the Bitcoin RPC console.</source>
-        <translation>Dobrodošli na Bitcoin RPC konzoli.</translation>
+        <source>Welcome to the Auroracoin RPC console.</source>
+        <translation>Dobrodošli na Auroracoin RPC konzoli.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -1661,7 +1661,7 @@ Naslov: %4
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Bitcoin Core</source>
+        <source>Auroracoin Core</source>
         <translation>Jedro Bitcoina</translation>
     </message>
     <message>

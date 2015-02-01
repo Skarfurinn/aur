@@ -1,9 +1,9 @@
 Sample configuration files for:
 
-SystemD: bitcoind.service
-Upstart: bitcoind.conf
-OpenRC:  bitcoind.openrc
-         bitcoind.openrcconf
+SystemD: auroracoind.service
+Upstart: auroracoind.conf
+OpenRC:  auroracoind.openrc
+         auroracoind.openrcconf
 
 have been made available to assist packagers in creating node packages here.
 

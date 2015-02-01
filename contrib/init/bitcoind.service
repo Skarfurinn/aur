@@ -7,9 +7,9 @@ User=bitcoin
 Group=bitcoin
 
 Type=forking
-PIDFile=/var/lib/bitcoind/bitcoind.pid
-ExecStart=/usr/bin/bitcoind -daemon -pid=/var/lib/bitcoind/bitcoind.pid \
--conf=/etc/bitcoin/bitcoin.conf -datadir=/var/lib/bitcoind -disablewallet
+PIDFile=/var/lib/auroracoind/auroracoind.pid
+ExecStart=/usr/bin/auroracoind -daemon -pid=/var/lib/auroracoind/auroracoind.pid \
+-conf=/etc/bitcoin/auroracoin.conf -datadir=/var/lib/auroracoind -disablewallet
 
 Restart=always
 PrivateTmp=true

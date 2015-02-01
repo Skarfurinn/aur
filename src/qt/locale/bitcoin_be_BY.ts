@@ -295,7 +295,7 @@
         <translation>Дапамога</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bitcoin network</source>
+        <source>%n active connection(s) to Auroracoin network</source>
         <translation><numerusform>%n актыўнае злучэнне з Bitcoin-сецівам</numerusform><numerusform>%n актыўных злучэнняў з Bitcoin-сецівам</numerusform></translation>
     </message>
     <message>
@@ -434,8 +434,8 @@ Address: %4
         <translation>(%1-біт)</translation>
     </message>
     <message>
-        <source>About Bitcoin Core</source>
-        <translation>Аб Bitcoin Core</translation>
+        <source>About Auroracoin Core</source>
+        <translation>Аб Auroracoin Core</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -625,8 +625,8 @@ Address: %4
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Распрацоўнікі Bitcoin Core</translation>
+        <source>The Auroracoin Core developers</source>
+        <translation>Распрацоўнікі Auroracoin Core</translation>
     </message>
     <message>
         <source>[testnet]</source>

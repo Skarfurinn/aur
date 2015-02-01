@@ -1,9 +1,9 @@
-Bitcoin Core 0.10.0
+Auroracoin Core 0.10.0
 =====================
 
 Setup
 ---------------------
-[Bitcoin Core](http://bitcoin.org/en/download) is the original Bitcoin client and it builds the backbone of the network. However, it downloads and stores the entire history of Bitcoin transactions (which is currently several GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once. If you would like the process to go faster you can [download the blockchain directly](bootstrap.md).
+[Auroracoin Core](http://bitcoin.org/en/download) is the original Bitcoin client and it builds the backbone of the network. However, it downloads and stores the entire history of Bitcoin transactions (which is currently several GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once. If you would like the process to go faster you can [download the blockchain directly](bootstrap.md).
 
 Running
 ---------------------
@@ -11,24 +11,24 @@ The following are some helpful notes on how to run Bitcoin on your native platfo
 
 ### Unix
 
-You need the Qt4 run-time libraries to run Bitcoin-Qt. On Debian or Ubuntu:
+You need the Qt4 run-time libraries to run Auroracoin-Qt. On Debian or Ubuntu:
 
 	sudo apt-get install libqtgui4
 
 Unpack the files into a directory and run:
 
-- bin/32/bitcoin-qt (GUI, 32-bit) or bin/32/bitcoind (headless, 32-bit)
-- bin/64/bitcoin-qt (GUI, 64-bit) or bin/64/bitcoind (headless, 64-bit)
+- bin/32/auroracoin-qt (GUI, 32-bit) or bin/32/auroracoind (headless, 32-bit)
+- bin/64/auroracoin-qt (GUI, 64-bit) or bin/64/auroracoind (headless, 64-bit)
 
 
 
 ### Windows
 
-Unpack the files into a directory, and then run bitcoin-qt.exe.
+Unpack the files into a directory, and then run auroracoin-qt.exe.
 
 ### OSX
 
-Drag Bitcoin-Qt to your applications folder, and then run Bitcoin-Qt.
+Drag Auroracoin-Qt to your applications folder, and then run Auroracoin-Qt.
 
 ### Need Help?
 

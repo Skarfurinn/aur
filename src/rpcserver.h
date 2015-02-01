@@ -93,7 +93,7 @@ public:
 };
 
 /**
- * Bitcoin RPC command dispatcher.
+ * Auroracoin RPC command dispatcher.
  */
 class CRPCTable
 {

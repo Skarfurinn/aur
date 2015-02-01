@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright (c) 2014 The Bitcoin Core developers
+# Copyright (c) 2014 The Auroracoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -24,8 +24,8 @@ fi
 
 set -f
 
-BITCOIND=${BITCOIND:-${1}/bitcoind}
-CLI=${BITCOINCLI:-${1}/bitcoin-cli}
+BITCOIND=${BITCOIND:-${1}/auroracoind}
+CLI=${BITCOINCLI:-${1}/auroracoin-cli}
 
 DIR="${BASH_SOURCE%/*}"
 SENDANDWAIT="${DIR}/send.sh"

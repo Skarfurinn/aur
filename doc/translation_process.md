@@ -1,13 +1,13 @@
 Translations
 ============
 
-The Bitcoin Core GUI can be easily translated into other languages. Here's how we
+The Auroracoin Core GUI can be easily translated into other languages. Here's how we
 handle those translations.
 
 Files and Folders
 -----------------
 
-### bitcoin-qt.pro
+### auroracoin-qt.pro
 
 This file takes care of generating `.qm` files from `.ts` files. It is mostly
 automated.

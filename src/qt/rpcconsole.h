@@ -22,7 +22,7 @@ QT_BEGIN_NAMESPACE
 class QItemSelection;
 QT_END_NAMESPACE
 
-/** Local Bitcoin RPC console. */
+/** Local Auroracoin RPC console. */
 class RPCConsole: public QDialog
 {
     Q_OBJECT

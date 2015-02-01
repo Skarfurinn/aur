@@ -26,7 +26,7 @@ Homepage: http://www.bitcoin.org/
 Vcs-Git: git://github.com/bitcoin/bitcoin.git
 Vcs-Browser: http://github.com/bitcoin/bitcoin
 
-Package: bitcoind
+Package: auroracoind
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
@@ -39,10 +39,10 @@ Description: peer-to-peer network based digital currency - daemon
  Full transaction history is stored locally at each client.  This
  requires 20+ GB of space, slowly growing.
  .
- This package provides the daemon, bitcoind, and the CLI tool
- bitcoin-cli to interact with the daemon.
+ This package provides the daemon, auroracoind, and the CLI tool
+ auroracoin-cli to interact with the daemon.
 
-Package: bitcoin-qt
+Package: auroracoin-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
@@ -55,4 +55,4 @@ Description: peer-to-peer network based digital currency - Qt GUI
  Full transaction history is stored locally at each client.  This
  requires 20+ GB of space, slowly growing.
  .
- This package provides Bitcoin-Qt, a GUI for Bitcoin based on Qt.
+ This package provides Auroracoin-Qt, a GUI for Bitcoin based on Qt.

@@ -338,7 +338,7 @@ Address: %4
         <translation>верзија</translation>
     </message>
     <message>
-        <source>About Bitcoin Core</source>
+        <source>About Auroracoin Core</source>
         <translation>O Bitcoin Coru</translation>
     </message>
     <message>
